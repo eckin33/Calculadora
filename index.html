@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="calculadoraPrincipal">
+
+        <div id="telaDiv">
+            <input type="text" disabled="disabled" id="tela" placeholder="0" >
+        </div>
+
+        <div class="row">
+            <button onclick="calcular('acao', 'c')" class="size2">C</button>
+            <button onclick="calcular('valor', '/')">/</button>
+            <button onclick="calcular('valor', '*')">X</button>
+        </div>
+
+        <div class="row">
+            <button onclick="calcular('valor', 7)">7</button>
+            <button onclick="calcular('valor', 8)">8</button>
+            <button onclick="calcular('valor', 9)">9</button>
+            <button onclick="calcular('valor', '-')">-</bu'tton>
+        </div>
+
+        <div class="row">
+            <button onclick="calcular('valor', 4)">4</button>
+            <button onclick="calcular('valor', 5)">5</button>
+            <button onclick="calcular('valor', 6)">6</button>
+            <button onclick="calcular('valor', '+')">+</button>
+        </div>
+
+        <div class="row" id="rowFirsts">
+            <button class="Firsts" onclick="calcular('valor', 1)">1</button>
+            <button class="Firsts" onclick="calcular('valor', 2)">2</button>
+            <button class="Firsts" onclick="calcular('valor', 3)">3</button>
+            <button id="size2Vertical" onclick="calcular('acao', '=')">=</button>
+        </div>
+
+        <div class="row">
+            <button class="size2" onclick="calcular('valor', 0)">0</button>
+            <button onclick="calcular('valor', '.')">.</button>
+        </div>
+    </div>
+</body>
+<script>
+
+    function calcular(tipo, valor){
+        if(tipo === 'valor'){
+            valor = document.getElementById('tela').value += valor
+        }
+        
+        if(valor === 'c'){
+            valor = document.getElementById('tela').value = ''
+        }
+
+        if(tipo === 'acao'){
+        
+            if('valor' === '+' || 'valor' === '-' || 'valor' === '/' || 'valor' === '*' || 'valor' === '.'){
+                document.getElementById('tela').value += valor
+            }
+        
+            if(valor === '='){
+                var valor_campo = eval(document.getElementById('tela').value)
+                document.getElementById('tela').value = valor_campo     
+            }
+        
+        } else if (valor === 'valor'){
+            document.getElementById('tela').value += valor
+        }
+    }
+</script>
+</html>
